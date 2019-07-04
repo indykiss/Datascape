@@ -6,10 +6,12 @@ import Chart from '../components/Chart';
 const API_URL = "https://api.worldtradingdata.com/api/v1/forex_history&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz"
 
 
-// NOTHING WORKS
 // Ok so I have the BARE basics down 
 // I'm close to givng up on stock prices
-// NEXT STEP IS 
+// NEXT STEP:
+// I called the API and that's working
+// Need to parse the data
+// Then need to pass the data into the vis
 
 class Scape extends Component {
 
@@ -23,13 +25,14 @@ class Scape extends Component {
   }
 
 getURL = () => {
+  //https://api.worldtradingdata.com/api/v1/history?symbol=AAPL&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz
   return (
     "https://api.worldtradingdata.com/api/v1/history?symbol=" + this.state.stock + "&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz"
   )
 }
 
   callAPI() {
-    fetch(API_URL)
+    fetch(this.getURL())
       .then(response => response.json())
       .then((responseData) => {
         alert(responseData)
@@ -52,7 +55,7 @@ getURL = () => {
         start_date: this.state.start_date,
         end_date: this.state.end_date
     })
-    .callAPI(this.state.stock);
+    this.callAPI(this.state.stock);
   }
 
   render() {
@@ -65,7 +68,7 @@ getURL = () => {
               type = 'text'
               name = "stock"
               value = {this.state.stock}
-              onChange = {this.handleOnChange}
+              onChange = { (event) => this.handleOnChange(event) }
           />
         <label>Select start date</label>
           <input
