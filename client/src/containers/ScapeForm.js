@@ -1,4 +1,7 @@
 
+
+
+
 import React, { Component } from 'react';
 import App from '../App.css';
 import Chart from '../components/Chart';
@@ -23,6 +26,8 @@ class Scape extends Component {
       end_date: ''    };
   }
 
+// pull out the API fetch into actions then export and import that into this page
+
 getURL = () => {
   //https://api.worldtradingdata.com/api/v1/history?symbol=AAPL&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz
   return (
@@ -30,10 +35,15 @@ getURL = () => {
   )
 }
 
+// add in an argument for getURL
   callAPI() {
     fetch(this.getURL())
       .then(response => response.json())
       .then((responseData) => {
+        // instead of this.setState, dispatch to reducer
+        // fetch post request to save it on the backend to the store; the store is the returned value from the reducer
+        // dispatch to the reducer
+        // saving into 2 places
         this.setState({ stock_name: responseData.name,
           history: responseData.history
         });

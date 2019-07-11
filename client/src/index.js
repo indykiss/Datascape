@@ -12,9 +12,10 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 const store = createStore(
+    // I pass in the reducer, which is returning the store
     scapeFormReducer,
     applyMiddleware(thunk)
-  )
+)
 
 ReactDOM.render(
     <Provider store={store}>
@@ -23,3 +24,7 @@ ReactDOM.render(
     document.getElementById('root')
 
 );
+
+
+// index js gets rendered to index.html under public. delete views folder.
+// Instead of views, UI goes to index.html
