@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_07_05_194554) do
 
   create_table "scapes", force: :cascade do |t|
+    t.string "scape_name"
     t.string "stock_name"
     t.string "history"
     t.date "start_date"

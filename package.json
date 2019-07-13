@@ -1,30 +1,36 @@
 {
-  "name": "client",
+  "name": "datascape",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
-  "babel": {
-    "presets": [
-      "env",
-      "react"
-    ]
-  },
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router": "^3.0.2",
-    "react-scripts": "0.9.5",
-    "redux": "^4.0.0",
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "thunk": "0.0.1",
-    "webpack": "^3.11.0"
+    "thunk": "0.0.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -1,24 +1,21 @@
 
-
-
-
-import React, { Component } from 'react';
-import App from '../App.css';
-import Chart from '../components/Chart';
-
+import React, { Component } from 'react'
+import App from '../App.css'
+//import Chart from '../components/Chart'
+import fetchAPI from '../actions/fetchAPI'
 
 // Ok so I have the BARE basics down 
-// I'm close to givng up on stock prices
 // NEXT STEP:
 // I called the API and that's working
 // Need to parse the data
-// Then need to pass the data into the vis
+// Then need to display data
 
-class Scape extends Component {
+export default class ScapeForm extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
+      scape_name: '',
       stock_name: '',
       history: '',
       // need to say close price, not the others
@@ -26,31 +23,6 @@ class Scape extends Component {
       end_date: ''    };
   }
 
-// pull out the API fetch into actions then export and import that into this page
-
-getURL = () => {
-  //https://api.worldtradingdata.com/api/v1/history?symbol=AAPL&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz
-  return (
-    "https://api.worldtradingdata.com/api/v1/history?symbol=" + this.state.stock_name + "&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz"
-  )
-}
-
-// add in an argument for getURL
-  callAPI() {
-    fetch(this.getURL())
-      .then(response => response.json())
-      .then((responseData) => {
-        // instead of this.setState, dispatch to reducer
-        // fetch post request to save it on the backend to the store; the store is the returned value from the reducer
-        // dispatch to the reducer
-        // saving into 2 places
-        this.setState({ stock_name: responseData.name,
-          history: responseData.history
-        });
-      })
-      .catch(error => this.setState({ error }));
-      console.log(this)
-    }
 
   // I need to get the selected start and end dates close price
 
@@ -64,6 +36,7 @@ getURL = () => {
   handleOnSubmit(event) {
     event.preventDefault();
     this.setState({
+        scape_name: this.scape_name,
         stock_name: this.state.stock_name,
         start_date: this.state.start_date,
         end_date: this.state.end_date
@@ -75,29 +48,36 @@ getURL = () => {
     return(
       <div>
         <h1>Create a scape</h1>
-        <form onSubmit = { (event) => this.handleOnSubmit(event) }>
-        <label>Select a stock</label>
+        <form onSubmit={ (event) => this.handleOnSubmit(event) }>
+        <label>Name this scape</label>
+        <input
+              type='text'
+              name="scape_name"
+              value={this.state.scape_name}
+              onChange={ (event) => this.handleOnChange(event) }
+          />
+          <label>Select a stock</label>
           <input
-              type = 'text'
-              name = "stock_name"
-              value = {this.state.stock_name}
-              onChange = { (event) => this.handleOnChange(event) }
+              type='text'
+              name="stock_name"
+              value={this.state.stock_name}
+              onChange={ (event) => this.handleOnChange(event) }
           />
         <label>Select start date</label>
           <input
-            type = 'date'
-            name = "start_date"
-            value = {this.state.start_date}
-            onChange = { (event) => this.handleOnChange(event) }
+            type='date'
+            name="start_date"
+            value={this.state.start_date}
+            onChange={ (event) => this.handleOnChange(event) }
           />
         <label>Select end date</label>
           <input
-            type = 'date'
-            name = "end_date"
-            value = {this.state.end_date}
-            onChange = { (event) => this.handleOnChange(event) }
+            type='date'
+            name="end_date"
+            value={this.state.end_date}
+            onChange={ (event) => this.handleOnChange(event) }
           />
-        <input type = "submit" />
+        <input type="submit" />
       </form>
     </div>
   )}
@@ -108,5 +88,3 @@ getURL = () => {
 //     addScape: formData => dispatch({ type: 'ADD_SCAPE', payload: formData })
 //   }
 // };
-
-export default Scape;

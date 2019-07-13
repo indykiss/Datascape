@@ -1,9 +1,18 @@
 
 
-// What do I need to do?
-// I need to find a react project that uses a form and check that out
-// Go back to this file and delete all the webpacker stuff
+// Next steps:
+// Read ideaboard guide, because maybe very good
+// Make a fetch call to my rails API 
 
+// Next next steps
+// Save each scape to index and also to show. Do this with dispatch stuff
+    // and mapDispatchToProps and connect and stuff
+
+// What do I need to do?
+
+
+// I need to find a react project that uses a form and check that out
+// Step1:
 // Need to make a post and get request
 // Need to save all the scapes in an index and display that
     // So in my fetch, I need to dispatch into store (reducer then store technically)
@@ -18,7 +27,7 @@
 // Essentially:
 
 // store is a store
-// reducer updates store, gest the data to update when dispatch is called
+// reducer updates store, gets the data to update when dispatch is called
 // we call dispatch when we have data to update, which is in an action creator 
 
 // Debugging/ seeing how things work
@@ -30,15 +39,15 @@
 
 
 
-export const addScape = () => {
-    return {
-        type: "ADD_SCAPE",
-    }
-}
+// export const addScape = () => {
+//     return {
+//         type: "ADD_SCAPE",
+//     }
+// }
 
-export const restartScape = scape => {
-    return {
-        type: "RESTART_SCAPE"
-    }
-}
+// export const restartScape = scape => {
+//     return {
+//         type: "RESTART_SCAPE"
+//     }
+// }
 

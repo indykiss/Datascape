@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, LineSeries} from 'react-vis';
+//import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, LineSeries} from 'react-vis';
 import { Scape } from "./ScapeForm";
 
 const ScapeContainer = state => {

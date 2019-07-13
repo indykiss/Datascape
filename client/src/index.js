@@ -6,14 +6,14 @@ import App from './App';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
-import scapeFormReducer from './scapeFormReducer';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+import ScapeReducer from './reducers/ScapeReducer';
+//import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap-theme.css';
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 const store = createStore(
     // I pass in the reducer, which is returning the store
-    scapeFormReducer,
+    ScapeReducer,
     applyMiddleware(thunk)
 )
 

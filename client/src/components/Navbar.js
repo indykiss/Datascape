@@ -13,6 +13,7 @@ class NavBar extends Component {
            <li><NavLink to="/about">About</NavLink></li>
            <li><NavLink to="/contact">Contact</NavLink></li>
            <li><NavLink to="/resources">Resources</NavLink></li>
+           <li><NavLink to="/scapes">Scapes</NavLink></li>
           </a>
         </nav>
       </React.Fragment>
