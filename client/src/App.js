@@ -61,8 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAPI: () => {
-      dispatch(fetchAPI())
+    fetchScapes: () => {
+      dispatch(fetchScapes())
     }
   }
 }

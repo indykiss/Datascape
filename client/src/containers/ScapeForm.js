@@ -2,7 +2,11 @@
 import React, { Component } from 'react'
 import App from '../App.css'
 //import Chart from '../components/Chart'
+import { connect } from 'react-redux'
 import fetchAPI from '../actions/fetchAPI'
+import fetchScapes from '../actions/fetchScapes'
+import ScapeReducer from '../reducers/ScapeReducer'
+import Form from '../components/Form'
 
 // Ok so I have the BARE basics down 
 // NEXT STEP:
@@ -10,82 +14,59 @@ import fetchAPI from '../actions/fetchAPI'
 // Need to parse the data
 // Then need to display data
 
-export default class ScapeForm extends Component {
+class ScapeForm extends Component {
 
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+    super(props);
+    self = this
+    this.handleOnChange = this.handleOnChange.bind(this)
     this.state = {
-      scape_name: this.props.scape_name,
-      stock_name: this.props.stock_name,
-      history: this.props.history,
-      // need to say close price, not the others
-      start_date: this.props.start_date,
-      end_date: this.props.end_date    };
+        scape_name: '',
+        stock_name: '',
+        history: '',
+        // need to say close price, not the others
+        start_date: '',
+        end_date: ''    
+      };
   }
 
+// My handle on submit is broken, since its not saving it to the store
+// In between inputting all the data (which works) and hitting submit (broken)
 
-  // I need to get the selected start and end dates close price
 
-  handleOnChange = event => {
-    const {name, value} = event.target;
+  handleOnChange = (event) => {
     this.setState({
-      [name]: value
+      [event.target.name]: event.target.value
     })
   }
 
   handleOnSubmit(event) {
+    console.log(this.props.input)
     event.preventDefault();
+    this.props.addScape(this.state)
+    alert("meep")
     this.setState({
-        scape_name: this.scape_name,
-        stock_name: this.state.stock_name,
-        start_date: this.state.start_date,
-        end_date: this.state.end_date
+        scape_name: '',
+        stock_name: '',
+        start_date: '',
+        end_date: ''
     })
-    this.callAPI(this.state.stock_name);
+    alert("Made a scape!")
   }
 
   render() {
     return(
       <div>
         <h1>Create a scape</h1>
-        <form onSubmit={ (event) => this.handleOnSubmit(event) }>
-        <label>Name this scape</label>
-        <input
-              type='text'
-              name="scape_name"
-              value={this.state.scape_name}
-              onChange={ (event) => this.handleOnChange(event) }
-          />
-          <label>Select a stock</label>
-          <input
-              type='text'
-              name="stock_name"
-              value={this.state.stock_name}
-              onChange={ (event) => this.handleOnChange(event) }
-          />
-        <label>Select start date</label>
-          <input
-            type='date'
-            name="start_date"
-            value={this.state.start_date}
-            onChange={ (event) => this.handleOnChange(event) }
-          />
-        <label>Select end date</label>
-          <input
-            type='date'
-            name="end_date"
-            value={this.state.end_date}
-            onChange={ (event) => this.handleOnChange(event) }
-          />
-        <input type="submit" />
-      </form>
+        <Form input={this.state} handleOnSubmit={this.handleOnSubmit} handleOnChange={this.handleOnChange}/>
     </div>
   )}
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addScape: formData => dispatch({ type: 'ADD_SCAPE', payload: formData })
-//   }
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    addScape: (scape) => dispatch((scape))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ScapeForm)

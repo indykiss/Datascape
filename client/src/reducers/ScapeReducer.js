@@ -1,18 +1,24 @@
 
-export default function ScapeReducer(state = { loading: false, scapes: [] }, action) {
+// Fix this somehow?
+
+export default function ScapeReducer(state = {scapes: [], scape: {} }, action) {
     switch (action.type) {
-        case "LOADING_SCAPES":
-
-            return {
-                ...state,
-                loading: true,
-            }
         case "FETCH_SCAPES":
-
+            console.log("loading scapes reducer")
+            return {
+                ...state, scapes: action.payload
+            }
+        case "FETCH_SCAPE":
+        console.log("fetch scapes reducer")
             return {
                 ...state,
-                loading: false,
-                scapes: action.payload
+                scape: action.payload
+            }
+        case "ADD_SCAPE":
+        console.log("fetch scapes reducer")
+            return {
+                ...state,
+                scape: action.payload
             }
 
         default:

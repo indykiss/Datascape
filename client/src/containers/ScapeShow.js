@@ -1,17 +1,42 @@
 
 
-import React from 'react';
+import React, { Component } from 'react'
 //import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, LineSeries} from 'react-vis';
 //import { Scape } from "./ScapeForm";
+import App from '../App.css'
+//import Chart from '../components/Chart'
+import { connect } from 'react-redux'
+import fetchScapes from '../actions/fetchScapes'
+import ScapeReducer from '../reducers/ScapeReducer'
 
-const ScapeContainer = state => {
-    const see_the_scape = this.props.stock_name;
+class ScapeShow extends Component {
 
-    return (
+    componentDidMount() {
+      const scapeId = window.location.href.split('/')[5]
+      this.props.fetchScape(scapeId)
+    }
+  
+    render() { 
+      return (
         <div>
-            {see_the_scape}
+          {this.props.scapes}
         </div>
-    )
+      )
+    }
+  }
+  
+  const mapStateToProps = (state) => ({
+    scapes: state.scapes.scape
+  })
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        fetchScape: formData => dispatch({ type: 'FETCH_SCAPE', payload: formData })
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(ScapeShow)
+
 
 
     // const scape = props.scape.map((scape, index) => {
@@ -37,5 +62,5 @@ const ScapeContainer = state => {
     //     </div>
     // );
     
-}
+
     

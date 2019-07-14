@@ -1,6 +1,9 @@
 
 
 // Next steps
+
+// Follow ideaboard thing
+
 // Save each scape to index and also to show. Do this with dispatch stuff
     // and mapDispatchToProps and connect and stuff
 
@@ -9,6 +12,7 @@
 
 // Now I need to actually build the form & show page, with saving scape
 // to index. Look at ideaboard's post/get stuff
+// sometimes i make the scape, but it doesnt get saved to the store
 
 
 // Next steps:
