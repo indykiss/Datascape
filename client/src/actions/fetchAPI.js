@@ -10,7 +10,6 @@ import ScapeReducer from '../reducers/ScapeReducer'
 
 
 export default function fetchAPI() {
-
     const getURL = () => {
         //https://api.worldtradingdata.com/api/v1/history?symbol=AAPL&api_token=EDP0CVswPgdwU2XzgIfVhkhhMSB9wtvUuSa5zth0aIbIE856xVdrVyoqB1mz
         return (
@@ -21,7 +20,6 @@ export default function fetchAPI() {
       return (dispatch) => {
         dispatch({type: 'LOADING_SCAPES'});
 
-      // add in an argument for getURL
       return fetch(this.getURL())
             .then(response => response.json())
             .then((responseData) => {
@@ -39,3 +37,5 @@ export default function fetchAPI() {
             .catch(error => this.setState({ error }));
       }
 }
+
+

@@ -2,7 +2,7 @@
 
 import React from 'react';
 //import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, LineSeries} from 'react-vis';
-import { Scape } from "./ScapeForm";
+//import { Scape } from "./ScapeForm";
 
 const ScapeContainer = state => {
     const see_the_scape = this.props.stock_name;
@@ -39,4 +39,3 @@ const ScapeContainer = state => {
     
 }
     
-export default Scape; 

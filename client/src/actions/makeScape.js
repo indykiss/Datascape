@@ -1,12 +1,20 @@
 
 
-// Next steps:
-// Read ideaboard guide, because maybe very good
-// Make a fetch call to my rails API 
-
-// Next next steps
+// Next steps
 // Save each scape to index and also to show. Do this with dispatch stuff
     // and mapDispatchToProps and connect and stuff
+
+// So I'm half circle done. The React app is talking to the rails api
+// in that the scapes from rails is on front end
+
+// Now I need to actually build the form & show page, with saving scape
+// to index. Look at ideaboard's post/get stuff
+
+
+// Next steps:
+// Read ideaboard guide, because maybe very good
+// Need to finish ideaboard guide
+
 
 // What do I need to do?
 

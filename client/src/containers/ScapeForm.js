@@ -14,13 +14,14 @@ export default class ScapeForm extends Component {
 
   constructor(props) {
     super(props)
+    this.handleClick = this.handleClick.bind(this)
     this.state = {
-      scape_name: '',
-      stock_name: '',
-      history: '',
+      scape_name: this.props.scape_name,
+      stock_name: this.props.stock_name,
+      history: this.props.history,
       // need to say close price, not the others
-      start_date: '',
-      end_date: ''    };
+      start_date: this.props.start_date,
+      end_date: this.props.end_date    };
   }
 
 

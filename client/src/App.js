@@ -13,6 +13,7 @@ import Scapes from './components/Scapes'
 import ScapeForm from './containers/ScapeForm'
 import ScapeShow from './containers/ScapeShow'
 import fetchAPI from './actions/fetchAPI'
+import fetchScapes from './actions/fetchScapes'
 import ScapeReducer from './reducers/ScapeReducer'
 
 
@@ -37,13 +38,13 @@ class App extends Component {
             <div>
               <Navbar/>
               <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route exact path='/scape/new' component={ScapeForm}/>
-                <Route path='/scapes/:scapeID' component={ScapeShow}/>
-                <Route exact path='/about' component={About}/>
-                <Route exact path='/contact' component={Contact}/>
-                <Route exact path='/resources' component={Resources}/>
-                <Route exact path='/scapes' component={Scapes}/>
+                <Route path="/" render={props => <Home {...props} />} exact />
+                <Route path="/scape/new" render={props => <ScapeForm {...props} />} exact />
+                <Route path="/scapes/:scapeID" render={props => <ScapeShow {...props} />} exact  />
+                <Route path="/about" render={props => <About {...props} />} exact />
+                <Route path="/contact" render={props => <Contact {...props} />} exact />
+                <Route path="/resources" render={props => <Resources {...props}  />} exact />
+                <Route path="/scapes" render={(props) => <Scapes {...props} fetchScapes={this.props.fetchScapes} scapes={this.props.scapes} />} exact />
               </Switch>
             </div>
         </Router>
@@ -54,8 +55,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-
-//? ?    see_the_scape: state.stock_name
+    scapes: state.scapes
   }
 }
 
@@ -67,4 +67,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (App)
+export default connect(mapStateToProps, mapDispatchToProps) (App);
